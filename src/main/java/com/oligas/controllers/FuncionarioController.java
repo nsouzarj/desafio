@@ -60,7 +60,7 @@ public class FuncionarioController {
      */
     @ApiOperation(value = "Lista todos os funcionários cadastrado na base de dados")
     @GetMapping(value = "/listaFuncionario/{nomeFuncionario}")
-    public List<Funcionario> listaFuncionairios(@PathVariable(required = false) String nomeFuncionario) {
+    public List<Funcionario> listaFuncionairios(@RequestParam(required = false) String nomeFuncionario) {
       return this.funcionarioService.listFuncionarios(nomeFuncionario);
     }
 

@@ -26,9 +26,9 @@ public class FuncionarioService {
      * Lista toos os funcionarios filtrados ou não
      * @return
      */
-    public List<Funcionario> listFuncionarios(String nomeFuncionaio) {
-        if (nomeFuncionaio !=null){
-            return this.funcionarioRepository.findFuncionarioPorNome(nomeFuncionaio.toUpperCase());
+    public List<Funcionario> listFuncionarios(String nomeFuncionario) {
+        if (nomeFuncionario !=null){
+            return this.funcionarioRepository.findFuncionarioPorNome(nomeFuncionario.toUpperCase());
         }else{
             return this.funcionarioRepository.findAll();
         }
