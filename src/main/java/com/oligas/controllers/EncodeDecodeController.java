@@ -21,6 +21,11 @@ public class EncodeDecodeController {
     @Autowired(required = true)
     private EncodeDecode encodeDecode;
 
+    /**
+     * Este end point faz o encode de uma valor.
+     * @param valor
+     * @return
+     */
     @ApiOperation(value = "Encode de teste")
     @GetMapping(value = "/encode/{valor}")
     public String encode(@PathVariable(required = true)  @Size(min = 1, max = 8)  String valor) {
@@ -31,6 +36,11 @@ public class EncodeDecodeController {
         }
     }
 
+    /**
+     * Este end pont faz o decode do valor passado no encide.
+     * @param codigo
+     * @return
+     */
     @ApiOperation(value = "Decode de teste")
     @GetMapping(value = "/decode/{codigo}")
     public String decode(@PathVariable String codigo){

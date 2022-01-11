@@ -30,9 +30,17 @@ public interface EmbarqueRepository extends JpaRepository<Embarque, Integer> {
             "from embarque where funcionario_id_funcionario=? and data_embarque >= ? and data_embarque <= ? ",nativeQuery = true)
     List<Embarque> findEmbarqueByAll(Integer id,  Date dataInicial, Date dataFinal);
 
-    //Traz o ultimo embarque pelo id do funcionario.
-    @Query(value ="select * from (select max(id) as id from embarque where funcionario_id_funcionario=?) X "+
+    //Traz o ultimo embarque aberto pelo id do funcionario.
+    @Query(value ="select * from (select max(id) as id from embarque where funcionario_id_funcionario=? and data_desembarque is null) X "+
                   "inner join embarque emb on emb.id=X.id" ,nativeQuery = true)
+    Embarque findUltimoEmbarqueAberto(Integer id);
+
+    @Query(value ="select * from (select max(id) as id from embarque where funcionario_id_funcionario=? and data_desembarque is not null) X "+
+            "inner join embarque emb on emb.id=X.id" ,nativeQuery = true)
+    Embarque findUltimoEmbarqueFechado(Integer id);
+
+    @Query(value ="select * from (select max(id) as id from embarque where funcionario_id_funcionario=? ) X "+
+            "inner join embarque emb on emb.id=X.id" ,nativeQuery = true)
     Embarque findUltimoEmbarque(Integer id);
 
 }

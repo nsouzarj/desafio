@@ -24,7 +24,7 @@ public class Embarque {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataEmbarque;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataDesenbarque;
+    private Date dataDesembarque;
     private Integer diasMaximoEmbarcado;
     private Integer diasMinimoDeFolga;
 
