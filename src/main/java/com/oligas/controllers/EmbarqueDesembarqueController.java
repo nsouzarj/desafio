@@ -33,7 +33,7 @@ public class EmbarqueDesembarqueController {
      * @param dataFinal
      * @return
      */
-    @ApiOperation(value = "Lista de embarque de funcionários geral através dos filtros.",notes = "A data e no formato yyyy-MM-dd Ex: 2022-01-01")
+    @ApiOperation(value = "Lista de embarque de funcionários geral através dos filtros.",notes = "A data e no formato yyyy-MM-dd Ex: 2022-01-01 Obs: Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2. Os campos em  retornará todos os embarque e desembarque realizados.")
     @GetMapping(value = "/listaEmbarque/{idFuncionario}/{dataInicial}/{dataFinal}")
     public List<Embarque> listaembarque(@RequestParam(required = false) Integer idFuncinario,
                                         @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataInicial,
@@ -47,7 +47,7 @@ public class EmbarqueDesembarqueController {
      * @param dataEmbarque
      * @return
      */
-    @ApiOperation(value = "Realiza um embarque do funcionário.",notes = "A data e no formato yyyy-MM-dd Ex: 2022-01-01")
+    @ApiOperation(value = "Realiza um embarque do funcionário.",notes = "A data e no formato yyyy-MM-dd Ex: 2022-01-01. Obs: Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2.")
     @PostMapping(value = "/embarqueFuncionario/{idFuncionario}/{dataEmbarque}")
     public Embarque embarqueFuncionario(@PathVariable Integer idFuncionario, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataEmbarque){
         Optional<Funcionario> funcionario = null;
@@ -62,7 +62,7 @@ public class EmbarqueDesembarqueController {
      * @param idEmbarque
      * @return
      */
-    @ApiOperation(value = "Exclui um embarque da lista.", notes = "Exclui através do ID do embarque como parametro.")
+    @ApiOperation(value = "Exclui um embarque da lista.", notes = "Exclui através do ID do embarque emitirá uma mensagem.")
     @DeleteMapping(value = "/excluirEmbarque/{idEmbarque}")
     public String excluirEmbarque(@PathVariable(required = true)  Integer idEmbarque){
         return  embarqueService.excluirEmbarque(idEmbarque);
@@ -75,7 +75,7 @@ public class EmbarqueDesembarqueController {
      * @param dataDesembarque
      * @return
      */
-    @ApiOperation(value = "Alteração da data do desembarque de funcionário.",notes = "Realiza o desembarque através do ID do funcionário")
+    @ApiOperation(value = "Alteração da data do desembarque de funcionário.",notes = "Realiza o desembarque através do ID do funcionário. Obs: Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2.")
     @PutMapping(value = "/desembarqueFuncionario/{idFuncionario}/{dataDesembarque}")
     public Optional<Embarque> desembarqueFuncionario(@RequestParam Integer idFuncionario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataDesembarque){
         return embarqueService.desembarqueFuncionario(idFuncionario , dataDesembarque);

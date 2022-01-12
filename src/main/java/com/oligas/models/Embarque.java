@@ -1,4 +1,5 @@
 package com.oligas.models;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,10 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel (
+        value       = "Classe Embarque",
+        description = "Esta classe e responsável pelo embarque e desembarque de funcionários."
+        )
 @Entity
 /**
  * Classe de embarque onde são registraos embarques

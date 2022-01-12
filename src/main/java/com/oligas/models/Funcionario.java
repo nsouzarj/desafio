@@ -1,4 +1,5 @@
 package com.oligas.models;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,10 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel (
+        value       = "Classe Funcionario",
+        description = "Esta classe e responsável informação de funcionários."
+)
 @Entity(name = "FUNCIONARIO")
 public class Funcionario {
     @Id
