@@ -33,12 +33,12 @@ public class EmbarqueDesembarqueController {
      * @param dataFinal
      * @return
      */
-    @ApiOperation(value = "Lista de embarque de funcionários geral através dos filtros.",notes = "A data e no formato yyyy-MM-dd Ex: 2022-01-01 Obs: Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2. Os campos em  retornará todos os embarque e desembarque realizados.")
+    @ApiOperation(value = "Lista de embarque de funcionários geral através dos filtros.",notes = "A data e no formato yyyy-MM-dd Ex: 2022-01-01 Obs: Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2. Os campos em vazios retornará todos os embarques e desembarques já realizados.")
     @GetMapping(value = "/listaEmbarque/{idFuncionario}/{dataInicial}/{dataFinal}")
-    public List<Embarque> listaembarque(@RequestParam(required = false) Integer idFuncinario,
+    public List<Embarque> listaembarque(@RequestParam(required = false) Integer idFuncionario,
                                         @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataInicial,
                                         @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataFinal){
-        return embarqueService.listaembarque(idFuncinario,dataInicial,dataFinal);
+        return embarqueService.listaembarque(idFuncionario,dataInicial,dataFinal);
     }
 
     /**

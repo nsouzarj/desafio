@@ -11,11 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class EmbarqueService {
     @Autowired (required = false)
     EmbarqueRepository embarqueRepository;
     @Autowired (required = false)
     FuncionarioRepository funcionarioRepository;
+
     /**
      * Lista os embarques
      * @return
