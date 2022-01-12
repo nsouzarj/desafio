@@ -16,6 +16,7 @@ import java.util.Date;
         value       = "Classe Funcionario",
         description = "Esta classe e responsável informação de funcionários."
 )
+
 @Entity(name = "FUNCIONARIO")
 public class Funcionario {
     @Id
