@@ -27,10 +27,13 @@ public class EncodeDecodeController {
     @ApiOperation(value = "Encode de teste")
     @GetMapping(value = "/encode/{number}")
     public String encode(@PathVariable(required = true)  @Size (min = 1, max = 8)  String number) {
+        if (number.length() > 8){
+            return "Nao pode codificar numeros maiores que 8 digitos...";
+        }
         try {
             return encodeDecode.getEnconde(Integer.parseInt(number));
         }catch (Exception e){
-            return "Nao pode codificar numeros maiores que 8 digitos...";
+            return "Erro ao codificar o número";
         }
     }
 
