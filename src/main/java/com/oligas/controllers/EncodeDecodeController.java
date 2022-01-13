@@ -3,9 +3,10 @@ package com.oligas.controllers;
 import com.oligas.services.EncodeDecode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.constraints.Size;
+
 
 @CrossOrigin("*")
 @RestController
@@ -20,14 +21,14 @@ public class EncodeDecodeController {
 
     /**
      * Este end point faz o encode de uma valor.
-     * @param valor
+     * @param number
      * @return
      */
     @ApiOperation(value = "Encode de teste")
-    @GetMapping(value = "/encode/{codigo}")
-    public String encode(@PathVariable(required = true)  @Size(min = 1, max = 8)  String valor) {
+    @GetMapping(value = "/encode/{number}")
+    public String encode(@PathVariable(required = true)  @Size (min = 1, max = 8)  String number) {
         try {
-            return encodeDecode.getEnconde(Integer.parseInt(valor));
+            return encodeDecode.getEnconde(Integer.parseInt(number));
         }catch (Exception e){
             return "Nao pode codificar numeros maiores que 8 digitos...";
         }
@@ -35,13 +36,13 @@ public class EncodeDecodeController {
 
     /**
      * Este end pont faz o decode do valor passado no encide.
-     * @param codigo
+     * @param code
      * @return
      */
     @ApiOperation(value = "Decode de teste")
-    @GetMapping(value = "/decode/{valor}")
-    public String decode(@PathVariable String codigo){
-        return encodeDecode.getDecode(codigo);
+    @GetMapping(value = "/decode/{code}")
+    public String decode(@PathVariable(required = true) String code){
+        return encodeDecode.getDecode(code);
     }
 
 }
