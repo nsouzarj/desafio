@@ -24,7 +24,7 @@ public class EncodeDecodeController {
      * @return
      */
     @ApiOperation(value = "Encode de teste")
-    @GetMapping(value = "/encode/{valor}")
+    @GetMapping(value = "/encode/{codigo}")
     public String encode(@PathVariable(required = true)  @Size(min = 1, max = 8)  String valor) {
         try {
             return encodeDecode.getEnconde(Integer.parseInt(valor));
@@ -39,7 +39,7 @@ public class EncodeDecodeController {
      * @return
      */
     @ApiOperation(value = "Decode de teste")
-    @GetMapping(value = "/decode/{codigo}")
+    @GetMapping(value = "/decode/{valor}")
     public String decode(@PathVariable String codigo){
         return encodeDecode.getDecode(codigo);
     }
