@@ -34,7 +34,7 @@ public interface EmbarqueRepository extends JpaRepository<Embarque, Integer> {
     @Query(value ="select * from (select max(id) as id from embarque where funcionario_id_funcionario=? and data_desembarque is null) X "+
                   "inner join embarque emb on emb.id=X.id" ,nativeQuery = true)
     Embarque findUltimoEmbarqueAberto(Integer id);
-
+    //Traz o ultimo desambarque do funcionário
     @Query(value ="select * from (select max(id) as id from embarque where funcionario_id_funcionario=? and data_desembarque is not null) X "+
             "inner join embarque emb on emb.id=X.id" ,nativeQuery = true)
     Embarque findUltimoEmbarqueFechado(Integer id);
