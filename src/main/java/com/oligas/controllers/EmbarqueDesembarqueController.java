@@ -27,7 +27,7 @@ public class EmbarqueDesembarqueController {
     private FuncionarioService funcionarioService;
     /**
      * Este end point lista o embaque de funcionários geral ou através dos parametros descritos abaixo.
-     * @param idFuncinario
+     * @param idFuncionario
      * @param dataInicial
      * @param dataFinal
      * @return
