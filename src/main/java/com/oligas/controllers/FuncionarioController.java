@@ -58,7 +58,7 @@ public class FuncionarioController {
      * @param nomeFuncionario
      * @return
      */
-    @ApiOperation(value = "Lista todos os funcionários cadastrado na base de dados.",notes = "Obs: Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2.")
+    @ApiOperation(value = "Lista todos os funcionários cadastrado na base de dados.",notes = "Obs: Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2. Caso queira listar todos os funcionarios deixar o campo vazio.")
     @GetMapping(value = "/listaFuncionario/{nomeFuncionario}")
     public List<Funcionario> listaFuncionairios(@RequestParam(required = false) String nomeFuncionario) {
       return this.funcionarioService.listFuncionarios(nomeFuncionario);
