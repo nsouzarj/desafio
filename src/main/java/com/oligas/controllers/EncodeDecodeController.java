@@ -1,12 +1,10 @@
 package com.oligas.controllers;
-
 import com.oligas.services.EncodeDecode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 
 @CrossOrigin("*")
 @RestController
