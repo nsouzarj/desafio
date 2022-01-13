@@ -34,7 +34,7 @@ public class FuncionarioController {
      * @param funcionario
      * @return
      */
-    @ApiOperation(value = "Salva uma funcionário novo na lista de funcionários.", notes = "Obs:Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2.")
+    @ApiOperation(value = "Salva um funcionário novo na lista de funcionários.", notes = "Obs:Existem 2 funcionários cadastrados com valor do ID de valor 1 e 2.")
     @PostMapping(value = "/salvar")
     public Funcionario salvar(Funcionario funcionario) {
         return this.funcionarioService.salvar(funcionario);
