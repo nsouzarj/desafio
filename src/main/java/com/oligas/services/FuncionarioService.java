@@ -49,9 +49,9 @@ public class FuncionarioService {
     public String excluirFuncionario(Integer id){
         try {
             funcionarioRepository.deleteById(id);
-            return "Funciorio Excluido";
+            return "Funcionario excluido com sucesso !!";
         }catch (Exception e){
-            return  "Erro ao excluir funcionário ou funcionario está embarcado !!";
+            return  "Erro ao excluir funcionario ou funcionario está embarcado !!";
         }
 
     }
