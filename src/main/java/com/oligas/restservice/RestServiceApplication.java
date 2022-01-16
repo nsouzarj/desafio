@@ -7,7 +7,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.SpringServletContainerInitializer;
 
 
-@SpringBootApplication(scanBasePackages = {"com/oligas/services","com/oligas/config", "com/oligas/controllers", "com/oligas/models", "com/oligas/repository"})
+@SpringBootApplication(scanBasePackages = {"test","com/oligas/services","com/oligas/config", "com/oligas/controllers", "com/oligas/models", "com/oligas/repository"})
 @EnableSpringDataWebSupport
 @EntityScan("com/oligas/models")
 @EnableJpaRepositories("com/oligas/repository")
