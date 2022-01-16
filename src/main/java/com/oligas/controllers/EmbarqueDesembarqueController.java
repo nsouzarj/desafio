@@ -25,7 +25,7 @@ public class EmbarqueDesembarqueController {
     @Autowired(required = false)
     private FuncionarioService funcionarioService;
     /**
-     * Este end point lista o embaque de funcionários geral ou através dos parametros descritos abaixo.
+     * Este end point lista o embarque de funcionários geral ou através dos parametros descritos abaixo.
      * @param idFuncionario
      * @param dataInicial
      * @param dataFinal
