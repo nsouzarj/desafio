@@ -53,8 +53,6 @@ public class EmbarqueDesembarqueController {
         return embarqueService.embarqueFuncionario(funcionario.get() , dataEmbarque);
     }
 
-
-
     /**
      * Este end point exclui um embarque da lista de emabarque
      * @param idEmbarque
@@ -65,7 +63,6 @@ public class EmbarqueDesembarqueController {
     public String excluirEmbarque(@PathVariable(required = true)  Integer idEmbarque){
         return  embarqueService.excluirEmbarque(idEmbarque);
     }
-
 
     /**
      * Este end point realiza a alteração da data do desembarque
@@ -78,5 +75,4 @@ public class EmbarqueDesembarqueController {
     public Optional<Embarque> desembarqueFuncionario(@RequestParam Integer idFuncionario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataDesembarque){
         return embarqueService.desembarqueFuncionario(idFuncionario , dataDesembarque);
     }
-
 }

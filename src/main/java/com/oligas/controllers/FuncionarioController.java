@@ -63,5 +63,4 @@ public class FuncionarioController {
     public List<Funcionario> listaFuncionairios(@RequestParam(required = false) String nomeFuncionario) {
       return this.funcionarioService.listFuncionarios(nomeFuncionario);
     }
-
 }
