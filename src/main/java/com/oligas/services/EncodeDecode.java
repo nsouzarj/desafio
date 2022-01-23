@@ -12,7 +12,7 @@ public class EncodeDecode {
      */
     public  String getEnconde(Integer num){
         try {
-            String numRecebe=String.format("%06d",num);// Integer.toString(num);
+            String numRecebe=String.format("%6d",num);// Integer.toString(num);
             Base64.Encoder encode = Base64.getEncoder();
             String converte = encode.encodeToString(numRecebe.getBytes());
             return converte;
