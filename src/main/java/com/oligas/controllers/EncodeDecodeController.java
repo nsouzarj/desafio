@@ -29,7 +29,7 @@ public class EncodeDecodeController {
             return "Nao pode codificar numeros maiores que 8 digitos...";
         }
         try {
-            return encodeDecode.getEnconde(Integer.parseInt(number));
+            return encodeDecode.getEnconde((int) Float.parseFloat(number));
         }catch (Exception e){
             return "Erro ao codificar o número";
         }
