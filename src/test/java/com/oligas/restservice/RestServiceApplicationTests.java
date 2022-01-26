@@ -25,12 +25,9 @@ class RestServiceApplicationTests {
 
 	@Test
 	void Teste(){
-
 		System.out.print("TESTE");
-
 		funcionarioController.listaFuncionairios("NELSON");
 		embarqueDesembarqueController.listaembarque(null,null,null);
-
 	}
 
 
