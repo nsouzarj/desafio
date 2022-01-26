@@ -1,6 +1,6 @@
 package com.oligas.services;
 import com.oligas.config.UtilsDate;
-import com.oligas.models.Embarque;
+import com.oligas.models.EmbarqueDesembarque;
 import com.oligas.models.Funcionario;
 import com.oligas.repository.EmbarqueRepository;
 import com.oligas.repository.FuncionarioRepository;
@@ -22,7 +22,7 @@ public class EmbarqueService {
      * Lista os embarques
      * @return
      */
-    public List<Embarque> listaembarque (Integer idFuncionario, Date dataInicial, Date dataFinal) {
+    public List<EmbarqueDesembarque> listaembarque (Integer idFuncionario, Date dataInicial, Date dataFinal) {
         if (idFuncionario != null && dataInicial ==null && dataFinal==null) {
             return embarqueRepository.findEmbarqueIdFuncionario(idFuncionario);
         }else  if (idFuncionario != null && dataInicial !=null && dataFinal!=null){
@@ -38,46 +38,46 @@ public class EmbarqueService {
      * @param dataEmbarque
      * @return
      */
-    public Embarque embarqueFuncionario (Funcionario funcionario, Date dataEmbarque) {
+    public EmbarqueDesembarque embarqueFuncionario (Funcionario funcionario, Date dataEmbarque) {
         UtilsDate utilsDate = new UtilsDate();
         Integer diasEmbarcado=null;
         Integer diasDeFolga = null;
-        Embarque embarque = new Embarque();
+        EmbarqueDesembarque embarqueDesembarque = new EmbarqueDesembarque();
 
         //Traz a última data do embarque fechado
-        Embarque embarqueAnteriorFechado = embarqueRepository.findUltimoEmbarqueFechado(funcionario.getIdFuncionario());
+        EmbarqueDesembarque embarqueDesembarqueAnteriorFechado = embarqueRepository.findUltimoEmbarqueFechado(funcionario.getIdFuncionario());
 
         //Traz a última data do embarque aberto
-        Embarque embarqueAnteriorAberto = embarqueRepository.findUltimoEmbarqueAberto(funcionario.getIdFuncionario());
+        EmbarqueDesembarque embarqueDesembarqueAnteriorAberto = embarqueRepository.findUltimoEmbarqueAberto(funcionario.getIdFuncionario());
 
         //Aqui verifica os dias de folga caso for null é o primeiro embarque verificando
         //O Último desembarque pela data de desembarque
-        if(embarqueAnteriorFechado!=null){
-              diasDeFolga = Math.toIntExact(utilsDate.getDiasCorridos(embarqueAnteriorFechado.getDataDesembarque(), dataEmbarque));
+        if(embarqueDesembarqueAnteriorFechado !=null){
+              diasDeFolga = Math.toIntExact(utilsDate.getDiasCorridos(embarqueDesembarqueAnteriorFechado.getDataDesembarque(), dataEmbarque));
             if (diasDeFolga <=7){
                 return null;
             }
         }
         //Verifica se tem 14 dias embarcado se for maior nao faz o embarque
-        if (embarqueAnteriorAberto!=null){
-            diasEmbarcado =Math.toIntExact(utilsDate.getDiasCorridos(embarqueAnteriorAberto.getDataEmbarque(), dataEmbarque));
+        if (embarqueDesembarqueAnteriorAberto !=null){
+            diasEmbarcado =Math.toIntExact(utilsDate.getDiasCorridos(embarqueDesembarqueAnteriorAberto.getDataEmbarque(), dataEmbarque));
             if (diasEmbarcado >=1 && diasEmbarcado <=14){
                 return null;
             }
-            if (diasEmbarcado > 14 && embarqueAnteriorAberto.getDataDesembarque()==null){
+            if (diasEmbarcado > 14 && embarqueDesembarqueAnteriorAberto.getDataDesembarque()==null){
                 return null;
             }
         }
 
         try {
-            embarque = new Embarque();
-            embarque.setFuncionario(funcionario);
-            embarque.setDataEmbarque(dataEmbarque);
-            embarque.setDiasMinimoDeFolga(7);
-            embarqueRepository.save(embarque);
-                return embarque;
+            embarqueDesembarque = new EmbarqueDesembarque();
+            embarqueDesembarque.setFuncionario(funcionario);
+            embarqueDesembarque.setDataEmbarque(dataEmbarque);
+            embarqueDesembarque.setDiasMinimoDeFolga(7);
+            embarqueRepository.save(embarqueDesembarque);
+                return embarqueDesembarque;
             } catch (Exception e) {
-                return embarque;
+                return embarqueDesembarque;
         }
 
     }
@@ -89,9 +89,9 @@ public class EmbarqueService {
      * @param dataDesembarque
      * @return
      */
-    public Optional<Embarque> desembarqueFuncionario (Integer idFuncionario, Date dataDesembarque) {
+    public Optional<EmbarqueDesembarque> desembarqueFuncionario (Integer idFuncionario, Date dataDesembarque) {
         try {
-            Optional<Embarque> embarqueAberto = Optional.ofNullable(embarqueRepository.findUltimoEmbarqueAberto(idFuncionario));
+            Optional<EmbarqueDesembarque> embarqueAberto = Optional.ofNullable(embarqueRepository.findUltimoEmbarqueAberto(idFuncionario));
              UtilsDate utilsDate = new UtilsDate();
              Long diasEmbarcado = utilsDate.getDiasCorridos(embarqueAberto.get().getDataEmbarque(), dataDesembarque);
              // Trata a diferenca de dias decorrido

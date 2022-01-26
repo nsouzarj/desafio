@@ -18,7 +18,7 @@ import java.util.Date;
 /**
  * Classe de embarque onde são registraos embarques
  */
-public class Embarque {
+public class EmbarqueDesembarque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
